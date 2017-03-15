@@ -1,5 +1,7 @@
 import os
+import json
 from app import create_app, db
+from app.models import Shikigami, Mission, Assistant_Soul, RewardQuest
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
@@ -10,7 +12,12 @@ migrate = Migrate(app, db)
 def make_shell_context():
     return dict(
         app=app,
-        db=db
+        json=json,
+        db=db,
+        Shikigami=Shikigami,
+        Mission=Mission,
+        Assistant_Soul=Assistant_Soul,
+        RewardQuest=RewardQuest
     )
 
 manager.add_command("shell", Shell(make_context=make_shell_context))
