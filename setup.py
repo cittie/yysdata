@@ -9,11 +9,8 @@ setup(name='yysdata',
       install_requires=[
           'flask-script',
           'flask-bootstrap',
-          'flask-moment',
           'flask-wtf',
           'flask-sqlalchemy',
-          'flask-migrate',
-          'flask-mail',
-          'flask-login'
+          'flask-migrate'
       ]
       )
