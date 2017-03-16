@@ -28,9 +28,10 @@ class BattleCounter(db.Model):
     __tablename__ = 'battle_counters'
     id = db.Column(db.Integer, primary_key=True)
     mission_id = db.Column(db.Integer, db.ForeignKey('missions.id'), index=True)
-    shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'), index=True)
-    group_leader = db.Column(db.Boolean, default=False)
-    order = db.Column(db.Integer)
+    shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'), index=True)    # Which monster is used
+    amount = db.Column(db.Integer)      # How many monsters in this counter
+    group_leader = db.Column(db.Boolean, default=False)     # Only for
+    order = db.Column(db.Integer)       # Appears on which round, max 3
 
 class Shikigami(db.Model):
     __tablename__ = 'shikigamis'
@@ -38,6 +39,7 @@ class Shikigami(db.Model):
     name = db.Column(db.String(128), unique=True, index=True)
     rarity = db.Column(db.String(4))
     awaken_materials = db.Column(db.String(16))
+    battle_counters = db.relationship('BattleCounter', backref='shikigami', lazy='joined')
     missions = db.relationship('Mission', secondary='battle_counters',
                                  backref=db.backref('mission', lazy='joined'),
                                  lazy='dynamic')
@@ -62,9 +64,36 @@ class Mission(db.Model):
     mission_type = db.Column(db.Integer)
     stamina_cost = db.Column(db.Integer)
     soul_id = db.Column(db.Integer, db.ForeignKey('souls.id'))
+    battle_counters = db.relationship('BattleCounter', backref='mission', lazy='joined')
     shikigamis = db.relationship('Shikigami', secondary='battle_counters',
                                  backref=db.backref('shikigami', lazy='joined'),
                                  lazy='dynamic')
+
+
+def import_mission_data():
+    Mission.query.delete()
+    BattleCounter.query.delete()
+    data = load_from_json(Mission.__tablename__)
+    for d in data:
+        mission = Mission(name=d['name'], stamina_cost = d['stamina_cost'])
+        db.session.add(mission)
+        counters = d['counters']    # A list contains all waves of monsters, max 3 waves.
+        #if group_leader in d:
+        #   group_leader = d['group_leader']
+        for i, counter in enumerate(counters):
+            for monster, amount in counter.items():
+                shikigami = Shikigami.query.filter_by(name=monster).first()
+                battle_counter = BattleCounter(
+                    mission=mission,
+                    shikigami=shikigami,
+                    amount=amount,
+                    order=i + 1
+                )
+                # if group_leader:
+                #   battle_counter.group_leader = group_leader
+                db.session.add(battle_counter)
+    db.session.commit()
+
 
 class Assistant_Soul(db.Model):
     __tablename__ = 'souls'

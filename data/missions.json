@@ -2,7 +2,7 @@
   {
     "name": "河畔童谣1",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "提灯小僧": 3,
         "盗墓小鬼": 1
@@ -19,7 +19,7 @@
   {
     "name": "河畔童谣2",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "提灯小僧": 3,
         "盗墓小鬼": 1
@@ -39,7 +39,7 @@
   {
     "name": "河畔童谣3",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "武士之灵": 3,
         "惠比寿": 1
@@ -58,7 +58,7 @@
   {
     "name": "河畔童谣4",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "黑豹": 3,
         "镰鼬": 1
@@ -77,7 +77,7 @@
   {
     "name": "河畔童谣5",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "蝴蝶精": 2,
         "鬼女红叶": 1
@@ -99,7 +99,7 @@
   {
     "name": "河畔童谣6",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "鬼使黑": 3,
         "鬼使白": 1
@@ -120,7 +120,7 @@
   {
     "name": "河畔童谣7",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "管狐": 3,
         "青行灯": 1
@@ -140,7 +140,7 @@
   {
     "name": "河畔童谣8",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "青坊主": 3,
         "海坊主": 1
@@ -163,7 +163,7 @@
   {
     "name": "河畔童谣9",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "青蛙瓷器": 3,
         "雨女": 1
@@ -187,7 +187,7 @@
   {
     "name": "河畔童谣10",
     "stamina_cost": 3,
-    "monsters":[
+    "counters":[
       {
         "萤草": 3,
         "兵俑": 1
