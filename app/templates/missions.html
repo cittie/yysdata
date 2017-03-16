@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}阴阳师乱七八糟小助手{% endblock %}
+
+{% block page_content %}
+
+{% if missions %}
+<div class="shikigami">
+    {% for mission in missions %}
+    <p>
+        {{ mission.name }}有
+        {% for shiki in mission.shikigamis %}
+        | {{ shiki.name }} |
+        {% endfor %}
+        这些怪。
+    </p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
