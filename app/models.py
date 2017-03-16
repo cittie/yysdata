@@ -2,11 +2,6 @@ import json
 from . import db
 from config import basedir
 
-def load_from_json(table_name):
-    with open(basedir + "\\data\\" + table_name + ".json") as json_file:
-        data = json.load(json_file)
-    return data
-
 class MissionType:
     STORY = 1
     SOUL_DUNGEON = 2
@@ -44,19 +39,6 @@ class Shikigami(db.Model):
                                  backref=db.backref('mission', lazy='joined'),
                                  lazy='dynamic')
 
-    @staticmethod
-    def import_data():
-        Shikigami.query.delete()
-        data = load_from_json(Shikigami.__tablename__)
-        for d in data:
-            shiki = Shikigami(
-                name=d['name'],
-                rarity = d['rarity'],
-                awaken_materials = d['awaken_materials']
-            )
-            db.session.add(shiki)
-        db.session.commit()
-
 class Mission(db.Model):
     __tablename__ = 'missions'
     id = db.Column(db.Integer, primary_key=True)
@@ -68,32 +50,6 @@ class Mission(db.Model):
     shikigamis = db.relationship('Shikigami', secondary='battle_counters',
                                  backref=db.backref('shikigami', lazy='joined'),
                                  lazy='dynamic')
-
-
-def import_mission_data():
-    Mission.query.delete()
-    BattleCounter.query.delete()
-    data = load_from_json(Mission.__tablename__)
-    for d in data:
-        mission = Mission(name=d['name'], stamina_cost = d['stamina_cost'])
-        db.session.add(mission)
-        counters = d['counters']    # A list contains all waves of monsters, max 3 waves.
-        #if group_leader in d:
-        #   group_leader = d['group_leader']
-        for i, counter in enumerate(counters):
-            for monster, amount in counter.items():
-                shikigami = Shikigami.query.filter_by(name=monster).first()
-                battle_counter = BattleCounter(
-                    mission=mission,
-                    shikigami=shikigami,
-                    amount=amount,
-                    order=i + 1
-                )
-                # if group_leader:
-                #   battle_counter.group_leader = group_leader
-                db.session.add(battle_counter)
-    db.session.commit()
-
 
 class Assistant_Soul(db.Model):
     __tablename__ = 'souls'
@@ -112,4 +68,45 @@ class RewardQuest(db.Model):
     shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'))
     amount = db.Column(db.Integer)
 
+
+def load_from_json(table_name):
+    with open(basedir + "\\data\\" + table_name + ".json") as json_file:
+        data = json.load(json_file)
+    return data
+
+def import_shikigami_data():
+    Shikigami.query.delete()
+    data = load_from_json(Shikigami.__tablename__)
+    for d in data:
+        shiki = Shikigami(
+            name=d['name'],
+            rarity = d['rarity'],
+            awaken_materials = d['awaken_materials']
+        )
+        db.session.add(shiki)
+    db.session.commit()
+
+def import_mission_data():
+    Mission.query.delete()
+    BattleCounter.query.delete()
+    data = load_from_json(Mission.__tablename__)
+    for d in data:
+        mission = Mission(name=d['name'], stamina_cost = d['stamina_cost'])
+        db.session.add(mission)
+        counters = d['counters']
+        #if group_leader in d:
+        #   group_leader = d['group_leader']
+        for i, counter in enumerate(counters):
+            for monster, amount in counter.items():
+                shikigami = Shikigami.query.filter_by(name=monster).first()
+                battle_counter = BattleCounter(
+                    mission=mission,
+                    shikigami=shikigami,
+                    amount=amount,
+                    order=i + 1
+                )
+                # if group_leader:
+                #   battle_counter.group_leader = group_leader
+                db.session.add(battle_counter)
+    db.session.commit()
 
