@@ -24,20 +24,30 @@ class AwakenMaterialValue:
     WATER = 4,
     LIGHT = 8
 
+class BattleCounter(db.Model):
+    __tablename__ = 'battle_counters'
+    id = db.Column(db.Integer, primary_key=True)
+    mission_id = db.Column(db.Integer, db.ForeignKey('missions.id'), index=True)
+    shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'), index=True)
+    group_leader = db.Column(db.Boolean, default=False)
+    order = db.Column(db.Integer)
+
 class Shikigami(db.Model):
     __tablename__ = 'shikigamis'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), unique=True)
+    name = db.Column(db.String(128), unique=True, index=True)
     rarity = db.Column(db.String(4))
     reward_quests = db.relationship('RewardQuest', backref='shikigami', lazy='dynamic')
     awaken_materials = db.Column(db.Integer)
+    missions = db.relationship('Mission', secondary='battle_counters',
+                                 backref=db.backref('mission', lazy='joined'),
+                                 lazy='dynamic')
 
     @staticmethod
     def import_data():
         data = load_from_json(Shikigami.__tablename__)
         for d in data:
-            shiki_name = d['name']
-            shiki = Shikigami.query.filter_by(name=shiki_name).first()
+            shiki = Shikigami.query.filter_by(name=d['name']).first()
             if not shiki:
                 shiki = Shikigami(
                     name=d['name'],
@@ -58,7 +68,9 @@ class Mission(db.Model):
     mission_type = db.Column(db.Integer)
     stamina_cost = db.Column(db.Integer)
     soul_id = db.Column(db.Integer, db.ForeignKey('souls.id'))
-
+    shikigamis = db.relationship('Shikigami', secondary='battle_counters',
+                                 backref=db.backref('shikigami', lazy='joined'),
+                                 lazy='dynamic')
 
 class Assistant_Soul(db.Model):
     __tablename__ = 'souls'
@@ -75,3 +87,6 @@ class RewardQuest(db.Model):
     name = db.Column(db.String(128))
     description = db.Column(db.Text())
     shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'))
+    amount = db.Column(db.Integer)
+
+

@@ -1,6 +1,8 @@
 from . import main
 from flask import render_template, redirect, url_for, flash, current_app, request
+from ..models import Shikigami
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    shikigamis = Shikigami.query.order_by(Shikigami.rarity)
+    return render_template('index.html', shikigamis=shikigamis)

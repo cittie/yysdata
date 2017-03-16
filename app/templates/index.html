@@ -1,3 +1,15 @@
 {% extends "base.html" %}
 
 {% block title %}阴阳师乱七八糟小助手{% endblock %}
+
+{% block page_content %}
+
+{% if shikigamis %}
+<div class="shikigami">
+    {% for shikigami in shikigamis %}
+    <p>{{ shikigami.name }}是{{ shikigami.rarity }}，需要{{ shikigami.awaken_materials }}觉醒材料。</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
