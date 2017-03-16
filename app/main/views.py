@@ -4,5 +4,5 @@ from ..models import Shikigami
 
 @main.route('/')
 def index():
-    shikigamis = Shikigami.query.order_by(Shikigami.rarity)
+    shikigamis = Shikigami.query.order_by(Shikigami.rarity.desc())
     return render_template('index.html', shikigamis=shikigamis)

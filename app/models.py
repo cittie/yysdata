@@ -2,8 +2,8 @@ import json
 from . import db
 from config import basedir
 
-def load_from_json(db_name):
-    with open(basedir + "\\data\\" + db_name + ".json") as json_file:
+def load_from_json(table_name):
+    with open(basedir + "\\data\\" + table_name + ".json") as json_file:
         data = json.load(json_file)
     return data
 
@@ -37,27 +37,21 @@ class Shikigami(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), unique=True, index=True)
     rarity = db.Column(db.String(4))
-    reward_quests = db.relationship('RewardQuest', backref='shikigami', lazy='dynamic')
-    awaken_materials = db.Column(db.Integer)
+    awaken_materials = db.Column(db.String(16))
     missions = db.relationship('Mission', secondary='battle_counters',
                                  backref=db.backref('mission', lazy='joined'),
                                  lazy='dynamic')
 
     @staticmethod
     def import_data():
+        Shikigami.query.delete()
         data = load_from_json(Shikigami.__tablename__)
         for d in data:
-            shiki = Shikigami.query.filter_by(name=d['name']).first()
-            if not shiki:
-                shiki = Shikigami(
-                    name=d['name'],
-                    rarity=d['rarity'],
-                    awaken_materials=d['awaken_materials']
-                )
-            else:
-                shiki.name = d['name'],
-                shiki.rarity = d['rarity'],
-                shiki.awaken_materials = d['awaken_materials']
+            shiki = Shikigami(
+                name=d['name'],
+                rarity = d['rarity'],
+                awaken_materials = d['awaken_materials']
+            )
             db.session.add(shiki)
         db.session.commit()
 
