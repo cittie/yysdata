@@ -39,6 +39,9 @@ class Shikigami(db.Model):
                                  backref=db.backref('mission', lazy='joined'),
                                  lazy='dynamic')
 
+    def __repr__(self):
+        return '<%r>' % self.name
+
 class Mission(db.Model):
     __tablename__ = 'missions'
     id = db.Column(db.Integer, primary_key=True)

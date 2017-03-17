@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}结果{% endblock %}
+
+{% block page_content %}
+
+{% if missions %}
+<div class="shikigami">
+    {% for mission in missions %}
+    <p>
+        {{ mission.name }}可以打，所有怪包括
+        {% for shiki in mission.shikigamis %}
+         {{ shiki.name }}
+        {% endfor %}
+    </p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
