@@ -87,5 +87,7 @@
   {"name": "涂壁", "rarity": "N", "awaken_materials": null},
   {"name": "提灯小僧", "rarity": "N", "awaken_materials": null},
   {"name": "灯笼鬼", "rarity": "N", "awaken_materials": null},
-  {"name": "黑豹", "rarity": "S", "awaken_materials": null}
+  {"name": "黑豹", "rarity": "B", "awaken_materials": null},
+  {"name": "暗凤凰", "rarity": "B", "awaken_materials": null},
+  {"name": "八歧大蛇", "rarity": "B", "awaken_materials": null}
 ]
