@@ -4,9 +4,38 @@
 
 {% block page_content %}
 
-{% if missions %}
+{% if missions1 %}
+<h2>式神一</h2>
 <div class="shikigami">
-    {% for mission in missions %}
+    {% for mission in missions1 %}
+    <p>
+        {{ mission.name }}可以打，所有怪包括
+        {% for shiki in mission.shikigamis %}
+         {{ shiki.name }}
+        {% endfor %}
+    </p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if missions2 %}
+<h2>式神二</h2>
+<div class="shikigami">
+    {% for mission in missions2 %}
+    <p>
+        {{ mission.name }}可以打，所有怪包括
+        {% for shiki in mission.shikigamis %}
+         {{ shiki.name }}
+        {% endfor %}
+    </p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if missions3 %}
+<h2>式神三</h2>
+<div class="shikigami">
+    {% for mission in missions3 %}
     <p>
         {{ mission.name }}可以打，所有怪包括
         {% for shiki in mission.shikigamis %}

@@ -15,4 +15,6 @@ class RewardQuestQueryForm(FlaskForm):
     #amount1 = SelectField(u'数量')
     shikigami2 = QuerySelectField(u'式神2', query_factory=all_shikigamis, get_label='name')
     #amount2 = SelectField(u'数量')
+    shikigami3 = QuerySelectField(u'式神3', query_factory=all_shikigamis, get_label='name')
+    # amount2 = SelectField(u'数量')
     submit = SubmitField(u'提交')

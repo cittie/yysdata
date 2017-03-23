@@ -21,7 +21,7 @@ class AwakenMaterialValue:
 
 class BattleCounter(db.Model):
     __tablename__ = 'battle_counters'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, index=True)
     mission_id = db.Column(db.Integer, db.ForeignKey('missions.id'), index=True)
     shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'), index=True)    # Which monster is used
     amount = db.Column(db.Integer)      # How many monsters in this counter
@@ -30,7 +30,7 @@ class BattleCounter(db.Model):
 
 class Shikigami(db.Model):
     __tablename__ = 'shikigamis'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, index=True)
     name = db.Column(db.String(128), unique=True, index=True)
     rarity = db.Column(db.String(4))
     awaken_materials = db.Column(db.String(16))
@@ -44,8 +44,8 @@ class Shikigami(db.Model):
 
 class Mission(db.Model):
     __tablename__ = 'missions'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128))
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    name = db.Column(db.String(128), index=True)
     mission_type = db.Column(db.Integer)
     stamina_cost = db.Column(db.Integer)
     soul_id = db.Column(db.Integer, db.ForeignKey('souls.id'))
