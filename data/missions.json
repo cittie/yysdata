@@ -469,7 +469,7 @@
   },
   {
     "name": "探索第一章普通",
-    "stamina_cost": 15,
+    "stamina_cost": 3,
     "counters":[
       {
         "灯笼鬼": 2,
@@ -494,7 +494,7 @@
   },
   {
     "name": "探索第一章困难",
-    "stamina_cost": 15,
+    "stamina_cost": 3,
     "counters":[
       {
         "跳跳犬": 2,
@@ -519,7 +519,7 @@
   },
   {
     "name": "探索第二章",
-    "stamina_cost": 18,
+    "stamina_cost": 3,
     "counters":[
       {
         "帚神": 1,
@@ -551,7 +551,7 @@
   },
   {
     "name": "探索第三章普通",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "天邪鬼黄": 1,
@@ -592,7 +592,7 @@
   },
     {
     "name": "探索第三章困难",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "天邪鬼黄": 1,
@@ -633,7 +633,7 @@
   },
   {
     "name": "探索第四章普通",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "帚神": 1,
@@ -671,7 +671,7 @@
   },
   {
     "name": "探索第四章困难",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "帚神": 1,
@@ -707,7 +707,7 @@
   },
   {
     "name": "探索第五章普通",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "涂壁": 1,
@@ -746,7 +746,7 @@
   },
   {
     "name": "探索第五章困难",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "涂壁": 1,
@@ -784,7 +784,7 @@
   },
   {
     "name": "探索第六章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "灯笼鬼": 1,
@@ -822,7 +822,7 @@
   },
   {
     "name": "探索第七章",
-    "stamina_cost": 24,
+    "stamina_cost": 3,
     "counters":[
       {
         "鲤鱼精": 3,
@@ -870,7 +870,7 @@
   },
   {
     "name": "探索第八章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "唐纸伞妖": 1,
@@ -914,7 +914,7 @@
   },
   {
     "name": "探索第九章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "提灯小僧": 1,
@@ -952,7 +952,7 @@
   },
   {
     "name": "探索第十章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "丑时之女": 1,
@@ -996,7 +996,7 @@
   },
   {
     "name": "探索第十一章普通",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "武士之灵": 1,
@@ -1036,7 +1036,7 @@
   },
   {
     "name": "探索第十一章困难",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "武士之灵": 1,
@@ -1076,7 +1076,7 @@
   },
   {
     "name": "探索第十二章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "海坊主": 1,
@@ -1120,7 +1120,7 @@
   },
   {
     "name": "探索第十三章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "饿鬼": 1,
@@ -1161,7 +1161,7 @@
   },
   {
     "name": "探索第十四章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "帚神": 1,
@@ -1193,7 +1193,7 @@
   },
   {
     "name": "探索第十五章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "天邪鬼绿": 1,
@@ -1234,7 +1234,7 @@
   },
   {
     "name": "探索第十六章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "饿鬼": 1,
@@ -1272,7 +1272,7 @@
   },
   {
     "name": "探索第十七章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "鸦天狗": 1
@@ -1303,7 +1303,7 @@
   },
   {
     "name": "探索第十八章",
-    "stamina_cost": 21,
+    "stamina_cost": 3,
     "counters":[
       {
         "九命猫": 6
@@ -1335,7 +1335,7 @@
   },
   {
     "name": "探索番外",
-    "stamina_cost": 27,
+    "stamina_cost": 3,
     "counters":[
       {
         "犬神": 3,

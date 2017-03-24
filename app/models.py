@@ -24,6 +24,7 @@ class BattleCounter(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
     mission_id = db.Column(db.Integer, db.ForeignKey('missions.id'), index=True)
     shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'), index=True)    # Which monster is used
+    stamina_cost = db.Column(db.Integer)
     amount = db.Column(db.Integer)      # How many monsters in this counter
     group_leader = db.Column(db.Boolean, default=False)     # Only for
     order = db.Column(db.Integer)       # Appears on which round, max 3
@@ -49,7 +50,7 @@ class Mission(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
     name = db.Column(db.String(128), index=True)
     mission_type = db.Column(db.Integer)
-    stamina_cost = db.Column(db.Integer)
+    mission_stamina_cost = db.Column(db.Integer)
     soul_id = db.Column(db.Integer, db.ForeignKey('souls.id'))
     battle_counters = db.relationship('BattleCounter', backref='mission', lazy='joined')
     '''
@@ -98,22 +99,26 @@ def import_mission_data():
     BattleCounter.query.delete()
     data = load_from_json(Mission.__tablename__)
     for d in data:
-        mission = Mission(name=d['name'], stamina_cost = d['stamina_cost'])
-        db.session.add(mission)
+        mission = Mission(name=d['name'])
+
         counters = d['counters']
-        #if group_leader in d:
-        #   group_leader = d['group_leader']
+        stamina_cost = d['stamina_cost']
+        mission_stamina_cost = 0
+
         for i, counter in enumerate(counters):
             for monster, amount in counter.items():
                 shikigami = Shikigami.query.filter_by(name=monster).first()
                 battle_counter = BattleCounter(
                     mission=mission,
                     shikigami=shikigami,
+                    stamina_cost=stamina_cost,
                     amount=amount,
-                    order=i + 1
+                    order=i+1
                 )
-                # if group_leader:
-                #   battle_counter.group_leader = group_leader
+                mission_stamina_cost += stamina_cost
                 db.session.add(battle_counter)
+
+        mission.mission_stamina_cost = mission_stamina_cost
+        db.session.add(mission)
     db.session.commit()
 

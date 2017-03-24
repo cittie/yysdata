@@ -4,33 +4,21 @@
 
 {% block page_content %}
 
-{% if missions1 %}
-<h2>{{shikigamai1.name}}</h2>
+{% if mission_data %}
 <div class="shikigami">
-    <p>以下关卡：
-    {% for mission in missions1 %} {{ mission.name }} {% endfor %}
-    包含{{shikigamai1.name}}
-    </p>
-</div>
-{% endif %}
+    {% for data in mission_data %}
+        <h2>{{data[0].name}}</h2>
 
-{% if missions2 %}
-<h2>{{shikigamai2.name}}</h2>
-<div class="shikigami">
-    <p>以下关卡：
-    {% for mission in missions2 %} {{ mission.name }} {% endfor %}
-    包含{{shikigamai2.name}}
-    </p>
-</div>
-{% endif %}
-
-{% if missions3 %}
-<h2>{{shikigamai3.name}}</h2>
-<div class="shikigami">
-    <p>以下关卡：
-    {% for mission in missions3 %} {{ mission.name }} {% endfor %}
-    包含{{shikigamai3.name}}
-    </p>
+        {% if data[1] %}
+        <p>可用关卡：
+        {% for mission_detail in data[1] %}
+            <li>{{ mission_detail[0] }}: {{ mission_detail[1] }}</li>
+        {% endfor %}
+        </p>
+        {% else %}
+        <p>无可用关卡</p>
+        {% endif %}
+    {% endfor %}
 </div>
 {% endif %}
 
