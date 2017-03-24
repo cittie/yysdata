@@ -28,7 +28,8 @@ def quest_query():
         missions3 = db.session.query(Mission).join(BattleCounter).filter(
             BattleCounter.shikigami_id == form.shikigami2.data.id)
         return render_template('reward_quest_query_result.html',
-                               missions1=missions1,
-                               missions2=missions2,
-                               missions3=missions3)
+                               missions1=missions1, shikigamai1=form.shikigami1.data,
+                               missions2=missions2, shikigamai2=form.shikigami2.data,
+                               missions3=missions3, shikigamai3=form.shikigami3.data
+                               )
     return render_template('reward_quest_query.html', form=form)

@@ -35,9 +35,11 @@ class Shikigami(db.Model):
     rarity = db.Column(db.String(4))
     awaken_materials = db.Column(db.String(16))
     battle_counters = db.relationship('BattleCounter', backref='shikigami', lazy='joined')
+    '''
     missions = db.relationship('Mission', secondary='battle_counters',
                                  backref=db.backref('mission', lazy='joined'),
                                  lazy='dynamic')
+    '''
 
     def __repr__(self):
         return '<%r>' % self.name
@@ -50,9 +52,11 @@ class Mission(db.Model):
     stamina_cost = db.Column(db.Integer)
     soul_id = db.Column(db.Integer, db.ForeignKey('souls.id'))
     battle_counters = db.relationship('BattleCounter', backref='mission', lazy='joined')
+    '''
     shikigamis = db.relationship('Shikigami', secondary='battle_counters',
                                  backref=db.backref('shikigami', lazy='joined'),
                                  lazy='dynamic')
+    '''
 
 class Assistant_Soul(db.Model):
     __tablename__ = 'souls'
