@@ -28,17 +28,10 @@ def quest_query():
         shikis_group = (form.shikigami1.data, form.shikigami2.data, form.shikigami3.data, form.shikigami4.data)
         mission_data = []
         for shiki in shikis_group:
-            missions = db.session.query(Mission).join(BattleCounter).filter(
-                BattleCounter.shikigami_id == shiki.id)
+            missions = Mission.get_missions_with_shikigami(shiki)
             if missions:
-                name_count_pairs = []
-                for mission in missions:
-                    shiki_count = 0
-                    for battle_counter in mission.battle_counters:
-                        if battle_counter.shikigami_id == shiki.id:
-                            shiki_count += battle_counter.amount
-                    name_count_pairs.append((mission.name, shiki_count))
-                name_count_pairs.sort(key=lambda x: x[1], reverse=True)
+                name_count_pairs = Mission.get_name_shikigami_amount(missions, shiki)
                 mission_data.append((shiki, name_count_pairs))
         return render_template('reward_quest_query_result.html', mission_data=mission_data)
+
     return render_template('reward_quest_query.html', form=form)

@@ -59,6 +59,36 @@ class Mission(db.Model):
                                  lazy='dynamic')
     '''
 
+    @staticmethod
+    def get_missions_with_shikigami(shikigami):
+        '''
+        :param
+         shikigami: obj
+        :return:
+         query obj with all missions contain the shikigami
+        '''
+        missions = db.session.query(Mission).join(BattleCounter).filter(
+            BattleCounter.shikigami_id == shikigami.id)
+        return missions
+
+    @staticmethod
+    def get_name_shikigami_amount(missions, shikigami):
+        '''
+        :param
+         mission: obj
+         shikigami: obj
+        :return: list of tuples: [(mission.name, shikigami.amount), ...]
+        '''
+        name_amount_pair = []
+        for mission in missions:
+            shiki_count = 0
+            for battle_counter in mission.battle_counters:
+                if battle_counter.shikigami_id == shikigami.id:
+                    shiki_count += battle_counter.amount
+            name_amount_pair.append((mission.name, shiki_count))
+        name_amount_pair.sort(key=lambda x: x[1], reverse=True)
+        return name_amount_pair
+
 class Assistant_Soul(db.Model):
     __tablename__ = 'souls'
     id = db.Column(db.Integer, primary_key=True)
