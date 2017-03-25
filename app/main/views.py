@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
+
 import collections
 from . import main
 from .. import db
 from flask import render_template, redirect, url_for, flash, current_app, request
 from ..models import Shikigami, Mission, BattleCounter
-from forms import RewardQuestQueryForm
+from forms import MissionQueryForm, RewardQuestQueryForm
 
 
 @main.route('/')
@@ -12,10 +14,18 @@ def index():
     return render_template('index.html', shikigamis=shikigamis)
 
 
-@main.route('/missions')
-def show_missions():
-    missions = Mission.query.order_by(Mission.name)
-    return render_template('missions.html', missions=missions)
+@main.route('/mission_query', methods=['GET', 'POST'])
+def mission_query():
+    form = MissionQueryForm()
+    if form.validate_on_submit():
+        shikigamis = Mission.get_shikigamis_in_mission(form.mission.data)
+        mission_info = Mission.get_shiki_name_amount_pair(form.mission.data, shikigamis)
+        return render_template('mission_query_result.html',
+                               mission=form.mission.data,
+                               mission_info=mission_info)
+    return render_template('mission_query.html', form=form)
+
+
 
 
 @main.route('/reward_quest_query', methods=['GET', 'POST'])
@@ -34,7 +44,7 @@ def quest_query():
             if missions:
                 for mission in missions:
                     mission_dict[mission] += 1
-                name_count_pairs = Mission.get_name_shikigami_amount(missions, shiki)
+                name_count_pairs = Mission.get_mission_name_shikigami_amount_pair(missions, shiki)
                 mission_data.append((shiki, name_count_pairs))
         common_missions = [(mission.name, count) for mission, count in mission_dict.items() if count > 1]
         common_missions.sort(key=lambda x: x[1], reverse=True)

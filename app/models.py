@@ -60,19 +60,31 @@ class Mission(db.Model):
     '''
 
     @staticmethod
+    def get_shikigamis_in_mission(mission):
+        shikigamis = db.session.query(Shikigami).join(BattleCounter).filter(
+            BattleCounter.mission_id == mission.id
+        )
+        return shikigamis
+
+    @staticmethod
+    def get_shiki_name_amount_pair(mission, shikigamis):
+        name_amount_pair = []
+        for shiki in shikigamis:
+            shiki_count = 0
+            for battle_counter in mission.battle_counters:
+                if battle_counter.shikigami_id == shiki.id:
+                    shiki_count += battle_counter.amount
+            name_amount_pair.append((shiki.name, shiki_count))
+        return name_amount_pair
+
+    @staticmethod
     def get_missions_with_shikigami(shikigami):
-        '''
-        :param
-         shikigami: obj
-        :return:
-         query obj with all missions contain the shikigami
-        '''
         missions = db.session.query(Mission).join(BattleCounter).filter(
             BattleCounter.shikigami_id == shikigami.id)
         return missions
 
     @staticmethod
-    def get_name_shikigami_amount(missions, shikigami):
+    def get_mission_name_shikigami_amount_pair(missions, shikigami):
         '''
         :param
          mission: obj
@@ -106,6 +118,10 @@ class RewardQuest(db.Model):
     shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'))
     amount = db.Column(db.Integer)
 
+
+def init_data():
+    import_shikigami_data()
+    import_mission_data()
 
 def load_from_json(table_name):
     with open(basedir + "\\data\\" + table_name + ".json") as json_file:
