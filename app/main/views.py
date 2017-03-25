@@ -1,3 +1,4 @@
+import collections
 from . import main
 from .. import db
 from flask import render_template, redirect, url_for, flash, current_app, request
@@ -27,11 +28,19 @@ def quest_query():
     if form.validate_on_submit():
         shikis_group = (form.shikigami1.data, form.shikigami2.data, form.shikigami3.data, form.shikigami4.data)
         mission_data = []
+        mission_dict = collections.defaultdict(int)
         for shiki in shikis_group:
             missions = Mission.get_missions_with_shikigami(shiki)
             if missions:
+                for mission in missions:
+                    mission_dict[mission] += 1
                 name_count_pairs = Mission.get_name_shikigami_amount(missions, shiki)
                 mission_data.append((shiki, name_count_pairs))
-        return render_template('reward_quest_query_result.html', mission_data=mission_data)
+        common_missions = [(mission.name, count) for mission, count in mission_dict.items() if count > 1]
+        common_missions.sort(key=lambda x: x[1], reverse=True)
+        return render_template('reward_quest_query_result.html',
+                               common_missions=common_missions,
+                               mission_data=mission_data
+                               )
 
     return render_template('reward_quest_query.html', form=form)

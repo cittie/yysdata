@@ -4,13 +4,26 @@
 
 {% block page_content %}
 
+{% if common_missions %}
+<div class="mission">
+    <h2>重合关卡:</h2>
+
+    <p>关卡名/式神种类
+    {% for mission_detail in common_missions %}
+        <li>{{ mission_detail[0] }}: {{ mission_detail[1] }}</li>
+    {% endfor %}
+    </p>
+
+</div>
+{% endif %}
+
 {% if mission_data %}
 <div class="shikigami">
     {% for data in mission_data %}
         <h2>{{data[0].name}}</h2>
 
         {% if data[1] %}
-        <p>可用关卡：
+        <p>可用关卡/数量：
         {% for mission_detail in data[1] %}
             <li>{{ mission_detail[0] }}: {{ mission_detail[1] }}</li>
         {% endfor %}
