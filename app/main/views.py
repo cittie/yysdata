@@ -47,6 +47,7 @@ def quest_query():
                 name_count_pairs = Mission.get_mission_name_shikigami_amount_pair(missions, shiki)
                 mission_data.append((shiki, name_count_pairs))
         common_missions = [(mission.name, count) for mission, count in mission_dict.items() if count > 1]
+        common_missions.sort(key=lambda x: x[0])
         common_missions.sort(key=lambda x: x[1], reverse=True)
         return render_template('reward_quest_query_result.html',
                                common_missions=common_missions,
