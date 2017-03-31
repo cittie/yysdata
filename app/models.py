@@ -1,6 +1,7 @@
 import json
 from . import db
 from config import basedir
+from flask import url_for
 
 class MissionType:
     STORY = 1
@@ -58,6 +59,14 @@ class Mission(db.Model):
                                  backref=db.backref('shikigami', lazy='joined'),
                                  lazy='dynamic')
     '''
+
+    def to_json(self):
+        json_mission = {
+            'url': url_for('api.get_mission', id=self.id, _external=True),
+            'name': self.name,
+            'battle_counters': url_for('api.get_battle_counters', id=self.id, _external=True)
+        }
+        return json_mission
 
     @staticmethod
     def get_shikigamis_in_mission(mission):
