@@ -3,7 +3,7 @@
 import collections
 from . import main
 from .. import db
-from flask import render_template, redirect, url_for, flash, current_app, request
+from flask import render_template, redirect, url_for, flash, current_app, request, abort
 from ..models import Shikigami, Mission, BattleCounter
 from forms import MissionQueryForm, RewardQuestQueryForm
 
@@ -55,3 +55,13 @@ def quest_query():
                                )
 
     return render_template('reward_quest_query.html', form=form)
+
+@main.route('/shutdown')
+def server_shutdown():
+    if not current_app.test:
+        abort(404)
+    shutdown = request.environ.get('werkzeug.server.shutdown')
+    if not shutdown:
+        abort(500)
+    shutdown()
+    return 'Shutting down...'
