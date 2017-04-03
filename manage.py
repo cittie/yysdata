@@ -31,6 +31,20 @@ manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
 
 @manager.command
+def deploy():
+    from flask_migrate import upgrade
+    import app.models as md
+
+    upgrade()
+    md.init_data()
+
+@manager.command
+def profile(length=25, profile_dir=None):
+    from werkzeug.contrib.profiler import ProfilerMiddleware
+    app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length],profile_dir=profile_dir)
+    app.run()
+
+@manager.command
 def test(coverage=False):
     """Run the unit tests."""
     if coverage and not os.environ.get('YYSDATA_COVERAGE'):

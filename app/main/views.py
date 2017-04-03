@@ -4,9 +4,18 @@ import collections
 from . import main
 from .. import db
 from flask import render_template, redirect, url_for, flash, current_app, request, abort
+from flask_sqlalchemy import get_debug_queries
 from ..models import Shikigami, Mission, BattleCounter
 from forms import MissionQueryForm, RewardQuestQueryForm
 
+
+@main.after_app_request
+def after_request(response):
+    for query in get_debug_queries():
+        if query.duration >= current_app.config['YYSDATA_SLOW_DB_QUERY_TIME']:
+            current_app.logger.warning('show query: %s\nParameters: %s\nDuration: %fs\nContext: %s\n' %
+                                       (query.statment, query.parameters, query.duration, query.context))
+    return response
 
 @main.route('/')
 def index():

@@ -5,6 +5,9 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'This is a temp secret key.'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_RECORD_QUERIES = True
+    YYSDATA_SLOW_DB_QUERY_TIME = 1
+    YYSDATA_DB_QUERY_TIMEOUT = 0.5
 
     @staticmethod
     def init_app(app):
