@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import unittest
 import threading
 from app import create_app, db, models
@@ -44,4 +46,10 @@ class SeleniumTestCase(unittest.TestCase):
 
     def tearDown(self):
         pass
-    
+
+    def test_home_page(self):
+        self.client.get('http://localhost:5000/')
+        self.assertTrue(u'阴阳师乱七八糟小助手' in self.client.page_source)
+
+        self.client.find_element_by_link_text(u'悬赏任务查询')
+        self.assertTrue(u'选怪' in self.client.page_source)
