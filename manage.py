@@ -36,6 +36,7 @@ def deploy():
     import app.models as md
 
     upgrade()
+    db.create_all()
     md.init_data()
 
 @manager.command

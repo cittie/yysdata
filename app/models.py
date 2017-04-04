@@ -133,7 +133,7 @@ def init_data():
     import_mission_data()
 
 def load_from_json(table_name):
-    with open(basedir + "\\data\\" + table_name + ".json") as json_file:
+    with open(basedir + "/data/" + table_name + ".json") as json_file:
         data = json.load(json_file)
     return data
 
