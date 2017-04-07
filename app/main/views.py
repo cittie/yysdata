@@ -6,7 +6,7 @@ from .. import db
 from flask import render_template, redirect, url_for, flash, current_app, request, abort
 from flask_sqlalchemy import get_debug_queries
 from ..models import Shikigami, Mission, BattleCounter
-from forms import MissionQueryForm, RewardQuestQueryForm
+from forms import MissionQueryForm, RewardQuestQueryForm, ShikigamiQueryForm
 
 
 @main.after_app_request
@@ -19,9 +19,17 @@ def after_request(response):
 
 @main.route('/')
 def index():
-    shikigamis = Shikigami.query.order_by(Shikigami.rarity.desc())
-    return render_template('index.html', shikigamis=shikigamis)
+    return render_template('index.html')
 
+@main.route('/shikigami_query', methods=['GET', 'POST'])
+def shikigami_query():
+    form = ShikigamiQueryForm()
+    if form.validate_on_submit():
+        shikigami = form.shikigami.data
+        return render_template('shikigami_query_result.html',
+                               shikigami=shikigami
+                               )
+    return render_template('mission_query.html', form=form)
 
 @main.route('/mission_query', methods=['GET', 'POST'])
 def mission_query():
@@ -33,9 +41,6 @@ def mission_query():
                                mission=form.mission.data,
                                mission_info=mission_info)
     return render_template('mission_query.html', form=form)
-
-
-
 
 @main.route('/reward_quest_query', methods=['GET', 'POST'])
 def quest_query():

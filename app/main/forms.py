@@ -13,6 +13,11 @@ def all_shikigamis():
 def all_missions():
     return Mission.query
 
+class ShikigamiQueryForm(FlaskForm):
+    shikigami = QuerySelectField(u'式神', query_factory=all_shikigamis, get_label='name',
+                               validators=[DataRequired()])
+    submit = SubmitField(u'提交')
+
 class RewardQuestQueryForm(FlaskForm):
     shikigami1 = QuerySelectField(u'式神1', query_factory=all_shikigamis, get_label='name',
                                   validators=[DataRequired()])
