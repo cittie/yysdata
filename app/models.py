@@ -18,7 +18,7 @@ class AwakenMaterialValue:
     FIRE = 1,
     WIND = 2,
     WATER = 4,
-    LIGHT = 8
+    LIGHTING = 8
 
 class BattleCounter(db.Model):
     __tablename__ = 'battle_counters'
@@ -30,11 +30,18 @@ class BattleCounter(db.Model):
     group_leader = db.Column(db.Boolean, default=False)     # Only for
     order = db.Column(db.Integer)       # Appears on which round, max 3
 
+class ShikiSoulSet(db.Model):
+    __tablename__ = 'shiki_soul_sets'
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    soul_id = db.Column(db.Integer, db.ForeignKey('souls.id'), index=True)
+    shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'), index=True)
+
 class Shikigami(db.Model):
     __tablename__ = 'shikigamis'
     id = db.Column(db.Integer, primary_key=True, index=True)
     name = db.Column(db.String(128), unique=True, index=True)
     rarity = db.Column(db.String(4))
+    role = db.Column(db.String(16))
     awaken_materials = db.Column(db.String(16))
     battle_counters = db.relationship('BattleCounter', backref='shikigami', lazy='joined')
     '''
