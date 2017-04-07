@@ -18,7 +18,7 @@ class RewardQuestQueryForm(FlaskForm):
                                   validators=[DataRequired()])
     shikigami2 = QuerySelectField(u'式神2', query_factory=all_shikigamis, get_label='name')
     shikigami3 = QuerySelectField(u'式神3', query_factory=all_shikigamis, get_label='name')
-    shikigami4 = QuerySelectField(u'式神3', query_factory=all_shikigamis, get_label='name')
+    shikigami4 = QuerySelectField(u'式神4', query_factory=all_shikigamis, get_label='name')
     submit = SubmitField(u'提交')
 
 class MissionQueryForm(FlaskForm):
