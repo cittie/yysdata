@@ -44,11 +44,7 @@ class Shikigami(db.Model):
     role = db.Column(db.String(16))
     awaken_materials = db.Column(db.String(16))
     battle_counters = db.relationship('BattleCounter', backref='shikigami', lazy='joined')
-    '''
-    missions = db.relationship('Mission', secondary='battle_counters',
-                                 backref=db.backref('mission', lazy='joined'),
-                                 lazy='dynamic')
-    '''
+    shiki_soul_sets = db.relationship('ShikiSoulSet', backref='shikigami', lazy='joined')
 
     def __repr__(self):
         return '<%r>' % self.name
@@ -61,11 +57,6 @@ class Mission(db.Model):
     mission_stamina_cost = db.Column(db.Integer)
     soul_id = db.Column(db.Integer, db.ForeignKey('souls.id'))
     battle_counters = db.relationship('BattleCounter', backref='mission', lazy='joined')
-    '''
-    shikigamis = db.relationship('Shikigami', secondary='battle_counters',
-                                 backref=db.backref('shikigami', lazy='joined'),
-                                 lazy='dynamic')
-    '''
 
     def to_json(self):
         json_mission = {
@@ -117,7 +108,7 @@ class Mission(db.Model):
         name_amount_pair.sort(key=lambda x: x[1], reverse=True)
         return name_amount_pair
 
-class Assistant_Soul(db.Model):
+class AssistantSoul(db.Model):
     __tablename__ = 'souls'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
@@ -125,14 +116,7 @@ class Assistant_Soul(db.Model):
     drop_missions = db.relationship('Mission', backref='soul', lazy='joined')
     attr_2_pieces = db.Column(db.String(64))
     attr_4_pieces = db.Column(db.String(256))
-
-class RewardQuest(db.Model):
-    __tablename__ = 'reward_quests'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128))
-    description = db.Column(db.Text())
-    shikigami_id = db.Column(db.Integer, db.ForeignKey('shikigamis.id'))
-    amount = db.Column(db.Integer)
+    shiki_soul_sets = db.relationship('ShikiSoulSet', backref='soul', lazy='joined')
 
 
 def init_data():
