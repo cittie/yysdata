@@ -6,7 +6,7 @@
 
 {% if common_missions %}
 <div class="mission">
-    <h2>重合关卡:</h2>
+    <h1>重合关卡:</h1>
 
     <p>关卡名/式神种类
     {% for mission_detail in common_missions %}
@@ -20,7 +20,7 @@
 {% if mission_data %}
 <div class="shikigami">
     {% for data in mission_data %}
-        <h2>{{data[0].name}}</h2>
+        <h1>{{data[0].name}}</h1>
 
         {% if data[1] %}
         <p>可用关卡/数量：

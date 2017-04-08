@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}结果{% endblock %}
+{% block title %}式神查询结果{% endblock %}
 
 {% block page_content %}
 
 <div class="shikigami">
-    <h2>{{ shikigami.name }}</h2>
+    <h1>{{ shikigami.name }}</h1>
 
     <p>
     {{ shikigami.name }}，稀有度{{ shikigami.rarity }}，
-        {% if shikigami.awaken_material %}
-            需要觉醒材料{{ shikigami.awaken_material }}。
+        {% if shikigami.awaken_materials %}
+            需要觉醒材料{{ shikigami.awaken_materials }}。
         {% else %}
             无法觉醒。
         {% endif %}
