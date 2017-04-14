@@ -1,0 +1,457 @@
+[
+  {
+    "awaken_materials": "火风", 
+    "name": "辉夜姬", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "火风", 
+    "name": "花鸟卷", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "火风", 
+    "name": "一目连", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "火风", 
+    "name": "荒", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷火", 
+    "name": "青行灯", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "酒吞童子", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷火", 
+    "name": "荒川之主", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "茨木童子", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷风", 
+    "name": "妖刀姬", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "小鹿男", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷火", 
+    "name": "两面佛", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "阎魔", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "雷火", 
+    "name": "大天狗", 
+    "rarity": "SSR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "金鱼姬", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "万年竹", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "烟烟罗", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "白童子", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "黑童子", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "般若", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "姑获鸟", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "妖琴师", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "鬼使黑", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "鬼使白", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "络新妇", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "雪女", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "白狼", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "吸血姬", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "妖狐", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "桃花妖", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "海坊主", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "食梦貘", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "傀儡师", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "孟婆", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "樱花妖", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "判官", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "骨女", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "跳跳哥哥", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "清姬", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "二口女", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "凤凰火", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "鬼女红叶", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "惠比寿", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "雷水", 
+    "name": "镰鼬", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "犬神", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "夜叉", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水雷", 
+    "name": "青坊主", 
+    "rarity": "SR"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "古笼火", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "鸦天狗", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "鲤鱼精", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "椒图", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "铁鼠", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "首无", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "食发鬼", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "山兔", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "青蛙瓷器", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "萤草", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "跳跳妹妹", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "管狐", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "独眼小僧", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "三尾狐", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "兵俑", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "座敷童子", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "山童", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "狸猫", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "河童", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "童男", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "童女", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "饿鬼", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "武士之灵", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "雨女", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "跳跳弟弟", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "巫蛊师", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "丑时之女", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "蝴蝶精", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "觉", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "水风", 
+    "name": "九命猫", 
+    "rarity": "R"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "唐纸伞妖", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "赤舌", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "寄生魂", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "盗墓小鬼", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "天邪鬼青", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "天邪鬼黄", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "天邪鬼赤", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "天邪鬼绿", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "帚神", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "涂壁", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "提灯小僧", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "灯笼鬼", 
+    "rarity": "N"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "黑豹", 
+    "rarity": "B"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "暗凤凰", 
+    "rarity": "B"
+  }, 
+  {
+    "awaken_materials": "", 
+    "name": "八歧大蛇", 
+    "rarity": "B"
+  }
+]
