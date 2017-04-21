@@ -19,13 +19,20 @@ class Json2Xlsx():
 
     def data_to_line(self):
         for ele in self.data:
-            for key, value in ele.items():
-                if key not in self.titles:
-                    self.worksheet.write(0, self.current_column, key)     # Add title to first row
-                    self.titles[key] = self.current_column                  # Pair title and column position
-                    self.current_column += 1
-                self.worksheet.write(self.current_row, self.titles[key], value)
+            self.convert_to_line(ele)
             self.current_row += 1                                           # write each element to a single line
+
+    def convert_to_line(self, target_dict):
+        for key, value in target_dict.items():
+            if key not in self.titles:
+                self.worksheet.write(0, self.current_column, key)  # Add title to first row
+                self.titles[key] = self.current_column  # Pair title and column position
+                self.current_column += 1
+            if type(value) is list:
+                for ele in value:
+                    self.convert_to_line(ele)
+            else:
+                self.worksheet.write(self.current_row, self.titles[key], value)
 
     def close_file(self):
         self.workbook.close()

@@ -36,6 +36,8 @@ if __name__ == '__main__':
 
     if not os.path.exists(file_path):
         print ('Please check the model name in args.')
+    elif model_name == 'missions':
+        print ('Mission data is unable to covert.')
     else:
         proc = Xlsx2Json(model_name)
         proc.data_to_list()
